@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  consul:
+    image: consul:1.15.4
+    ports:
+      - "8500:8500"
+      - "8600:8600"
+      - "8501:8501"
+      - "8502:8502"
+      - "8503:8503"
+      - "8300:8300"
+      - "8301:8301"
+      - "8302:8302"
+    networks:
+      - chat-network
+
+# Registrator is not tested enough, so we disable it
+  #registrator:
+  #  image: gliderlabs/registrator:master
+    #command: consul://consul:8500
+  #  restart: always
+  #  depends_on:
+  #    - consul
+
+
+networks:
+  chat-network:
+    external: true
